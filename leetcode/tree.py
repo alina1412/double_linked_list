@@ -1,3 +1,7 @@
+# The auxiliary TreeNode class from [LeetCode site]
+# (https://leetcode.com/playground/new/linked-list/)
+# for the demonstrational task.
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
