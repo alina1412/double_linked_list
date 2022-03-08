@@ -1,4 +1,7 @@
-# LeetCode 102. Binary Tree Level Order Traversal
+# The usage of the implementation of a `deque` container
+# for the solution of the task of  Binary Tree level order traversal
+# from the LeetCode site
+# (https://leetcode.com/problems/binary-tree-level-order-traversal/)
 
 from typing import List, Optional
 import leetcode.tree as tree
@@ -7,25 +10,25 @@ from mycollections import deque
 
 
 class Solution:
-    def levelOrder(self, root: Optional[tree.TreeNode]) -> List[List[int]]:
+    def level_order_traversal(self, root: Optional[tree.TreeNode]) -> List[List[int]]:
         ans = []
-        que = deque([root])  # [<><><15><7>]
+        que = deque([root])
         while que:
-            n = len(que)  # 4
-            lvl = []  # []
+            n = len(que)
+            lvl = []
             for i in range(n):
-                node = que.popleft()  # <20>
+                node = que.popleft()
                 if node:
                     lvl.append(node.val)
                     que.append(node.left)
                     que.append(node.right)
             if lvl:
                 ans.append(lvl)
-        return ans  # [ [3], [9,20] ]
+        return ans          # [[3], [9, 20], [15, 7]]
 
 
 sol = Solution()
-par = tree.stringToTreeNode("[3,9,20,null,null,15,7]")
-tree.prettyPrintTree(par)
-ans = sol.levelOrder(par)
+parsed_tree = tree.stringToTreeNode("[3,9,20,null,null,15,7]")
+tree.prettyPrintTree(parsed_tree)
+ans = sol.level_order_traversal(parsed_tree)
 print(ans)
